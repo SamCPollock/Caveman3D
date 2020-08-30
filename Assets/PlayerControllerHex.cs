@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerHex : MonoBehaviour
 {
-    private static float tileSize = 2;
+    private static float tileSize = 1.5f;
     public GameObject aimObject;
     public GameObject spearPrefab;
 
@@ -83,11 +83,11 @@ public class PlayerControllerHex : MonoBehaviour
     void StartTurn()
     {
         up = new Vector3(transform.position.x, transform.position.y, transform.position.z + tileSize);
-        rightUp = new Vector3(transform.position.x + tileSize * 0.5f, transform.position.y, transform.position.z + tileSize * 0.5f);
-        rightDown = new Vector3(transform.position.x + tileSize * 0.5f, transform.position.y, transform.position.z - tileSize * 0.5f);
+        rightUp = new Vector3(transform.position.x + tileSize * 0.75f, transform.position.y, transform.position.z + tileSize * 0.75f);
+        rightDown = new Vector3(transform.position.x + tileSize * 0.75f, transform.position.y, transform.position.z - tileSize * 0.75f);
         down = new Vector3(transform.position.x, transform.position.y, transform.position.z - tileSize);
-        leftDown = new Vector3(transform.position.x - tileSize * 0.5f, transform.position.y, transform.position.z - tileSize * 0.5f);
-        leftUp = new Vector3(transform.position.x - tileSize * 0.5f, transform.position.y, transform.position.z + tileSize * 0.5f);
+        leftDown = new Vector3(transform.position.x - tileSize * 0.75f, transform.position.y, transform.position.z - tileSize * 0.75f);
+        leftUp = new Vector3(transform.position.x - tileSize * 0.75f, transform.position.y, transform.position.z + tileSize * 0.75f);
     }
 
     void PlayerMove()
@@ -97,7 +97,6 @@ public class PlayerControllerHex : MonoBehaviour
     
     void SpearThrow()
     {
-        GameObject thrownSpear = Instantiate(spearPrefab);
-        thrownSpear.transform.SetParent(aimObject.transform);
+        GameObject thrownSpear = Instantiate(spearPrefab, aimObject.transform);
     }
 }

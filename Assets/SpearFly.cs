@@ -13,9 +13,9 @@ public class SpearFly : MonoBehaviour
     void Start()
     {
         PlayerControllerHex playerController = GetComponentInParent<PlayerControllerHex>();
-        transform.LookAt(playerController.targetPosition);
-     //   Vector3 startPoint = transform.position;
-      //  endPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + range);
+        //transform.LookAt(playerController.targetPosition); // obsolete, instantiated with rotation of aimObject in playerControllerHex.
+        Vector3 startPoint = transform.position;
+        //endPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + range);
     }
 
     // Update is called once per frame
@@ -23,9 +23,9 @@ public class SpearFly : MonoBehaviour
     {
         transform.Translate(0, 0, speed * Time.deltaTime);
 
-        //if (transform.position.z > startPoint.z + range )
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (Vector3.Distance(startPoint, transform.position) > range)
+        {
+            Destroy(gameObject);
+        }
     }
 }
